@@ -4,6 +4,7 @@ FROM ubuntu:16.04
 ARG DAPPER_HOST_ARCH
 ENV HOST_ARCH=${DAPPER_HOST_ARCH} ARCH=${DAPPER_HOST_ARCH}
 
+RUN sed -i '/deb-src/s/^# //' /etc/apt/sources.list
 RUN apt-get update && apt-get install -y build-essential wget curl iproute2 && \
     apt-get build-dep -y strongswan
 
